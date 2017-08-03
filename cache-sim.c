@@ -97,9 +97,6 @@ void initializeCache() {
 		}
 	}
 	// initialize all of the information about the CPU here	
-	//byte = 64;
-	//n = 4;
-	//cacheLineSize = 8;
 
 	numBlocks = byte/cacheLineSize;
 	numSets = numBlocks/n;
@@ -114,7 +111,6 @@ void initializeCache() {
 	for(int count = 0; count != numSets; count++) {
 		cache[count] =  malloc(sizeof(struct set));
 		cache[count]->size = n;
-		//*(cache+count).blocks = (block *)malloc(sizeof(block));
 		// there are a certain number of sets, and each set has a certain number of blocks.
 		// We must now instantiate the blocks as well.
 		for(int counter = 0; counter!=n; counter++) {
@@ -152,7 +148,7 @@ void printCache() {
 }
 
 
-// FIX THIS LATER, INITIALIZE SEEMS TO BE WORKING
+//  INITIALIZE SEEMS TO BE WORKING
 void freeCache() {
 	for(int count = 0; count!=numSets; count++) {
 		for(int counter = 0; counter!=numBlocks/numSets; counter++) {
